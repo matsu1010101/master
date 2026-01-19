@@ -4,9 +4,9 @@ import { prisma } from '@/lib/prisma';
 // 削除機能 (DELETE)
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+ { params }: { params: Promise<{ id: string }> } // 1. 型を Promise にする
 ) {
-  const id = params.id;
+  const { id } = await params; // 2. await で値を取り出す
 
   try {
     // データベースから削除
