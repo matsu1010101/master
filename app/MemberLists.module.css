@@ -1,0 +1,170 @@
+/* 全体を少し中央に寄せる */
+.listContainer {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 0;
+  font-family: var(--font-noto-serif), "Times New Roman", serif;
+}
+
+/* メインの見出し */
+.mainHeading {
+  font-size: 3rem;
+  font-weight: normal;
+  text-align: center;
+  margin-bottom: 48px;
+  color: #d4af37; /* 金色 */
+  border-bottom: 1px solid #d4af37;
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 20px;
+  letter-spacing: 0.2em;
+  text-shadow: 2px 2px 0px #3e0000;
+}
+
+/* リストのラッパー */
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 32px;
+}
+
+/* ▼▼▼ カードデザイン（修正あり） ▼▼▼ */
+.card {
+  /* 濃い赤と黒の微細なグラデーション */
+  background: linear-gradient(145deg, #1a0505 0%, #0d0d0d 100%);
+  border: 1px solid #3e1010;
+  /* 金色のアクセント枠線（左側） */
+  border-left: 4px solid #d4af37;
+  border-radius: 4px; /* 角をあまり丸くしない */
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ホバー時のエフェクト：浮き上がり＋金色の輝き */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15); /* 金色の影 */
+  border-color: #5a1a1a;
+}
+
+/* 装飾的な背景パターン（薄い透かし） */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+
+/* ★追加: 画像のラッパー */
+.imageWrapper {
+  flex-shrink: 0; /* 画像が潰れないようにする */
+}
+
+/* 画像本体：中華皿をイメージした正円、あるいは角丸 */
+.itemImage {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%; /* 皿のように丸く */
+  border: 3px solid #d4af37; /* 金の縁取り */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  display: block;
+}
+
+/* テキスト情報のエリア */
+.itemContent {
+  flex-grow: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 上段（商品名とID） */
+.itemHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 8px;
+  border-bottom: 1px dashed #555; /* 点線の下線 */
+  padding-bottom: 8px;
+}
+
+.itemName {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}
+
+.itemId {
+  font-size: 0.9rem;
+  color: #d4af37; /* 金色 */
+  font-family: monospace;
+}
+
+/* 詳細文 */
+.itemDescription {
+  margin-top: 8px;
+  color: #cccccc;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ボタンエリア */
+.buttonContainer {
+  flex-shrink: 0;
+}
+
+/* ボタンの共通スタイル */
+.button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* 詳細ボタン：赤ベースに金文字 */
+.detailsButton {
+  background-color: #8b0000; /* 深紅 */
+  color: #fff;
+  border: 1px solid #d4af37;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.detailsButton:hover {
+  background-color: #a00000;
+  color: #ffd700; /* 文字が金色に輝く */
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+/* モバイル対応（縦並び） */
+@media (max-width: 600px) {
+  .card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .itemHeader {
+    justify-content: center;
+  }
+}
