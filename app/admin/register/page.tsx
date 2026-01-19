@@ -5,8 +5,8 @@ export default function RegisterPage() {
   // 💾 データベースへ保存する処理 (Server Action)
   async function addMenu(formData: FormData) {
     'use server';
-
-    const nameJa = formData.get('nameJa') as string;
+ 
+    const name = formData.get('name') as string;
     const category = formData.get('category') as string;
     const price = Number(formData.get('price'));
     const isVegan = formData.get('isVegan') === 'on';
@@ -14,7 +14,7 @@ export default function RegisterPage() {
     // データベースの「Menu」テーブルに新しいデータを追加
     await prisma.menu.create({
       data: {
-        nameJa,
+        name,
         category,
         price
       },
@@ -31,7 +31,7 @@ export default function RegisterPage() {
       <form action={addMenu} style={formStyle}>
         <div>
           <label style={labelStyle}>メニュー名 (日本語):</label>
-          <input name="nameJa" type="text" required style={inputStyle} />
+          <input name="name" type="text" required style={inputStyle} />
         </div>
 
         <div>
