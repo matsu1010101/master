@@ -10,8 +10,8 @@ datasource db {
 }
 
 model Menu {
+  id          String   @id @default(cuid())
   nameJa      String
   category    String
   price       Int      @default(0)
-
 }
